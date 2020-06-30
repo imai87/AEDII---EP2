@@ -65,7 +65,7 @@ public class Main {
 	 * 
 	 * Se rodar o teste, tera uma visao melhor do que esta escrito acima.
 	 * 
-	 * @param pessoasTotal Entidade traduzida diretamente do CSV.
+	 * @param pessoasTotal Lista da entidade {@link Entrevistado} traduzida diretamente do CSV.
 	 * @return um grafo contendo uma lista com todos os vertices.
 	 */
 	private static Grafo criarVertices(List<Entrevistado> pessoasTotal) {
