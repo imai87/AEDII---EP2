@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Vertice {
 
     private String entrevistado;
     
-    private List<String> coordenadas;
+    private List<String> zonaDestino;
     
     private List<Vertice> adj;
 
@@ -17,12 +18,12 @@ public class Vertice {
 		this.entrevistado = entrevistado;
 	}
 
-	public List<String> getCoordenadas() {
-		return coordenadas;
+	public List<String> getZonaDestino() {
+		return zonaDestino;
 	}
 
-	public void setCoordenadas(List<String> coordenadas) {
-		this.coordenadas = coordenadas;
+	public void setZonaDestino(List<String> coordenadas) {
+		this.zonaDestino = coordenadas;
 	}
 
 	public List<Vertice> getAdj() {
@@ -33,9 +34,9 @@ public class Vertice {
 		this.adj = adj;
 	}
 
-	public Vertice(String entrevistado, List<String> coordenadas) {
+	public Vertice(String entrevistado, List<String> zonaDestino) {
         this.entrevistado = entrevistado;
-        this.coordenadas = coordenadas;
+        this.zonaDestino = zonaDestino;
         this.adj = new ArrayList<>();
     }
     
@@ -46,9 +47,12 @@ public class Vertice {
     @Override
     public String toString() {
     	
+    	String listaAdj = adj.stream().map(Vertice::getEntrevistado).collect(Collectors.joining(", "));
+    	
         return "Entrevistados{" +
-                "frequentadores='" + entrevistado + '\'' +
-                ", zonaDestino='" + coordenadas + '\'' +
-                '}';
+                "frequentador='" + entrevistado + '\'' +
+                ", zonaDestino='" + zonaDestino + '\'' +
+                ", vertices adjacentes='[" + listaAdj + '\'' +
+                "]}";
     }
 }

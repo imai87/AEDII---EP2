@@ -38,8 +38,8 @@ public class Entrevistado {
         return frequentador;
     }
 
-    public void setFrequentador(String frequentadores) {
-        this.frequentador = frequentadores;
+    public void setFrequentador(String frequentador) {
+        this.frequentador = frequentador;
     }
 
 //    public String getCoordenadaX() {
@@ -88,7 +88,7 @@ public class Entrevistado {
     public String toString() {
     	
         return "Entrevistados{" +
-                "frequentadores='" + frequentador + '\'' +
+                "frequentador='" + frequentador + '\'' +
                 ", zonaDestino='" + zonaDestino + '\'' +
                 '}';
     }

@@ -17,8 +17,8 @@ public class Grafo {
 		this.vertices = vertices;
 	}
 
-	public void addVertice(String entrevistado, List<String> coordenadas) {
-		Vertice vertice = new Vertice(entrevistado, coordenadas);
+	public void addVertice(String entrevistado, List<String> zonaDestino) {
+		Vertice vertice = new Vertice(entrevistado, zonaDestino);
 		vertices.add(vertice);
 	}
 	

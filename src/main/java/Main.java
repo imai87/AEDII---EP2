@@ -42,30 +42,29 @@ public class Main {
 
 		// Remove entrevistados com Zona de Destino igual a ZERO
 		pessoasTotal.removeIf(entrevistado -> entrevistado.getZonaDestino().equals("0"));
-
-//        for(Entrevistado entrevistado : pessoasTotal) {
-//        	System.out.println(entrevistado.toString());
-//        }
+		
+//		printListaResultado(pessoasTotal);
 
 		Grafo grafo = criarVertices(pessoasTotal);
 
-		for (Vertice vertice : grafo.getVertices()) {
-			System.out.println(vertice.toString());
-		}
+//		printListaResultado(grafo.getVertices());
 
 		// TODO Adicionar os vertices adjacentes
 		adicionarAdjacencia(grafo);
+		
+		printListaResultado(grafo.getVertices());
 	}
 
 	/**
 	 * Cria um {@link Grafo} e o popula com vertices. Vamos usar lista de adjacencia
 	 * para montar o grafo, porem, esse metodo nao adiciona os vertices adjacentes,
 	 * somente cria uma lista contendo todos os vertices, alem de juntar todos os
-	 * frequentadores duplicados que continham no {@link} pessoasTotal}.
+	 * frequentadores duplicados que continham no {@link pessoasTotal}.
 	 * 
 	 * Se rodar o teste, tera uma visao melhor do que esta escrito acima.
 	 * 
-	 * @param pessoasTotal Lista da entidade {@link Entrevistado} traduzida diretamente do CSV.
+	 * @param pessoasTotal Lista da entidade {@link Entrevistado} traduzida
+	 *                     diretamente do CSV.
 	 * @return um grafo contendo uma lista com todos os vertices.
 	 */
 	private static Grafo criarVertices(List<Entrevistado> pessoasTotal) {
@@ -99,6 +98,25 @@ public class Main {
 	}
 
 	private static void adicionarAdjacencia(Grafo grafo) {
-
+		
+		for (Vertice vertice : grafo.getVertices()) {
+			for (String zonaDestino : vertice.getZonaDestino()) {
+				for (Vertice outroVertice : grafo.getVertices()) {
+					
+					if (outroVertice.equals(vertice)) continue;
+					
+					for (String outraZonaDestino : outroVertice.getZonaDestino()) {
+						if (outraZonaDestino.equals(zonaDestino)) {
+							vertice.addAdj(outroVertice);
+						}
+					}
+				}
+			}
+			System.out.println(vertice);
+		}
+	}
+	
+	private static <T> void printListaResultado(List<T> lista) {
+		lista.forEach(System.out::println);
 	}
 }
