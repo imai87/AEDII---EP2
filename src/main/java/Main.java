@@ -49,7 +49,6 @@ public class Main {
 
 //		printListaResultado(grafo.getVertices());
 
-		// TODO Adicionar os vertices adjacentes
 		adicionarAdjacencia(grafo);
 		
 		printListaResultado(grafo.getVertices());
