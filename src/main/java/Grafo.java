@@ -4,17 +4,17 @@ import java.util.List;
 public class Grafo {
 
 	private List<Vertice> vertices;
-	
+
 	private int numArestas;
-	
+
 	private List<Double> grausDosVertices;
-	
+
 	public Grafo() {
 		vertices = new ArrayList<>();
 		numArestas = 0;
 		grausDosVertices = new ArrayList<>();
 	}
-	
+
 	public List<Vertice> getVertices() {
 		return vertices;
 	}
@@ -38,7 +38,7 @@ public class Grafo {
 	public void setGrausDosVertices(List<Double> grausDosVertices) {
 		this.grausDosVertices = grausDosVertices;
 	}
-	
+
 	public void addGrausDosVertices(Double grau) {
 		grausDosVertices.add(grau);
 	}
@@ -47,7 +47,7 @@ public class Grafo {
 		Vertice vertice = new Vertice(entrevistado, zonaDestino);
 		vertices.add(vertice);
 	}
-	
+
 	public void addAresta(Vertice origem, Vertice destino) {
 		origem.addAdj(destino);
 	}

@@ -42,7 +42,7 @@ public class Main {
 
 		// Remove entrevistados com Zona de Destino igual a ZERO
 		pessoasTotal.removeIf(entrevistado -> entrevistado.getZonaDestino().equals("0"));
-		
+
 //		printListaResultado(pessoasTotal);
 
 		Grafo grafo = criarVertices(pessoasTotal);
@@ -50,10 +50,11 @@ public class Main {
 //		printListaResultado(grafo.getVertices());
 
 		adicionarAdjacencia(grafo);
-		
-		// Para imprimir depois que o grafo jah estiver com as vertices adjacentes adicionados
+
+		// Para imprimir depois que o grafo jah estiver com as vertices adjacentes
+		// adicionados
 //		printListaResultado(grafo.getVertices());
-		
+
 		System.out.println(grafo.getNumArestas());
 	}
 
@@ -100,21 +101,22 @@ public class Main {
 	}
 
 	private static void adicionarAdjacencia(Grafo grafo) {
-		
+
 		int numArestas = 0;
-		
+
 		for (Vertice vertice : grafo.getVertices()) {
-			
+
 			double grauDoVertice = 0;
-			
+
 			for (String zonaDestino : vertice.getZonaDestino()) {
 				for (Vertice outroVertice : grafo.getVertices()) {
-					
-					if (outroVertice.equals(vertice)) continue;
-					
+
+					if (outroVertice.equals(vertice))
+						continue;
+
 					for (String outraZonaDestino : outroVertice.getZonaDestino()) {
 						if (outraZonaDestino.equals(zonaDestino)) {
-							
+
 							vertice.addAdj(outroVertice);
 							numArestas++;
 							grauDoVertice++;
@@ -122,13 +124,14 @@ public class Main {
 					}
 				}
 			}
-			
+
+			vertice.setGrau(grauDoVertice);
 			grafo.addGrausDosVertices(grauDoVertice);
-			
+
 			// Para imprimir enquanto os vertices adjacentes estao sendo adicionados
 			System.out.println(vertice);
 		}
-		
+
 		grafo.setNumArestas(numArestas / 2);
 	}
 
