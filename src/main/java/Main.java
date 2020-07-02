@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Main {
 
 	/**
@@ -55,7 +57,11 @@ public class Main {
 		// adicionados
 //		printListaResultado(grafo.getVertices());
 
-		System.out.println(grafo.getNumArestas());
+		System.out.println("Numero de arestas: " + grafo.getNumArestas());
+		
+		Histograma histograma = new Histograma(grafo.getGrausDosVertices().stream().mapToDouble(Double::doubleValue).toArray());
+		
+		histograma.criarHistograma();
 	}
 
 	/**
@@ -103,6 +109,8 @@ public class Main {
 	private static void adicionarAdjacencia(Grafo grafo) {
 
 		int numArestas = 0;
+		
+		int numVertice = 0;
 
 		for (Vertice vertice : grafo.getVertices()) {
 
@@ -127,9 +135,9 @@ public class Main {
 
 			vertice.setGrau(grauDoVertice);
 			grafo.addGrausDosVertices(grauDoVertice);
+			numVertice++;
 
-			// Para imprimir enquanto os vertices adjacentes estao sendo adicionados
-			System.out.println(vertice);
+			System.out.println("Vertice " + StringUtils.leftPad(Integer.toString(numVertice), 5, "0") + " -> " + vertice);
 		}
 
 		grafo.setNumArestas(numArestas / 2);

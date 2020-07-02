@@ -26,8 +26,8 @@ public class Histograma extends JFrame {
 		histograma.setType(HistogramType.FREQUENCY);
 		histograma.addSeries("Quantidade de pessoas que frequentaram o mesmo local", valores, 100, 1, 517);
 
-		JFreeChart histogram = ChartFactory.createHistogram("RelaÃ§Ã£o pessoas x lugares", "Quantidade de lugares",
-				"NÃºmero de pessoas", histograma);
+		JFreeChart histogram = ChartFactory.createHistogram("Relação: pessoas x pessoas encontradas", "Quantidade de encontros com outras pessoas",
+				"Número de pessoas", histograma);
 
 		ChartPanel painel = new ChartPanel(histogram);
 		add(painel);
