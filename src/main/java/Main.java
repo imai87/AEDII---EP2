@@ -51,7 +51,10 @@ public class Main {
 
 		adicionarAdjacencia(grafo);
 		
-		printListaResultado(grafo.getVertices());
+		// Para imprimir depois que o grafo jah estiver com as vertices adjacentes adicionados
+//		printListaResultado(grafo.getVertices());
+		
+		System.out.println(grafo.getNumArestas());
 	}
 
 	/**
@@ -98,7 +101,12 @@ public class Main {
 
 	private static void adicionarAdjacencia(Grafo grafo) {
 		
+		int numArestas = 0;
+		
 		for (Vertice vertice : grafo.getVertices()) {
+			
+			double grauDoVertice = 0;
+			
 			for (String zonaDestino : vertice.getZonaDestino()) {
 				for (Vertice outroVertice : grafo.getVertices()) {
 					
@@ -106,15 +114,24 @@ public class Main {
 					
 					for (String outraZonaDestino : outroVertice.getZonaDestino()) {
 						if (outraZonaDestino.equals(zonaDestino)) {
+							
 							vertice.addAdj(outroVertice);
+							numArestas++;
+							grauDoVertice++;
 						}
 					}
 				}
 			}
+			
+			grafo.addGrausDosVertices(grauDoVertice);
+			
+			// Para imprimir enquanto os vertices adjacentes estao sendo adicionados
 			System.out.println(vertice);
 		}
+		
+		grafo.setNumArestas(numArestas / 2);
 	}
-	
+
 	private static <T> void printListaResultado(List<T> lista) {
 		lista.forEach(System.out::println);
 	}
